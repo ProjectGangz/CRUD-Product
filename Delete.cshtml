@@ -1,0 +1,55 @@
+﻿@model WebEcommerceClothing.Models.ProductModel
+@{
+    Layout = "~/Views/Shared/_LayoutCRUD.cshtml";
+    ViewData["Title"] = "DeleteProduct";
+}
+
+<div class="m-4 p-5 my-custom-class">
+    <div class="custom-out-form">
+        <h1 class="text-center text-light">Delete Product</h1>
+        <div class="custom-form-container">
+            <table class="table">
+                <thead>
+                    <tr class="text-info">
+                        <td>Product ID</td>
+                        <td>Category ID</td>
+                        <td>Product Name</td>
+                        <td>Product Description</td>
+                        <td>Price</td>
+                        <td>Quantity</td>
+                        <td>Size</td>
+                        <td>Color</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="text-info">
+                        <td>@Model.ProductID</td>
+                        <td>@Model.CategoryID</td>
+                        <td>@Model.ProductName</td>
+                        <td>@Model.ProductDescription</td>
+                        <td>@Model.Price</td>
+                        <td>@Model.Quantity</td>
+                        <td>@Model.Size</td>
+                        <td>@Model.Color</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Hiển thị hình ảnh sản phẩm -->
+            <div class="text-center">
+                <img src="~/uploads/@Model.ProductImage" alt="Product Image" style="width: 300px; height: 400px;" />
+            </div>
+
+            <div class="d-flex justify-content-evenly mt-3">
+                <form asp-action="Delete" asp-route-id="@Model.ProductID" method="post">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+                <a class="btn btn-success" asp-action="Index">Back to List</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
